@@ -3,7 +3,12 @@
 # so that they will not go out into the public
 
 import os
+import argparse
 import ipaddress
+
+parser = argparse.ArgumentParser(description="Configures the default routes for hosts in the testbed")
+parser.add_argument("-s", "--setup", dest='is_setup',default = True, action='store_true')
+parser.add_argument("-t", "--teardown", dest='is_setup', default = False, action='store_false')
 
 CONTROL_NETWORKS = [
     '75.0.0.0/8',
@@ -29,6 +34,8 @@ def get_host_type():
         return HOST_TYPE_AGG
     if hostname.lower().startswith("vip"):
         return HOST_TYPE_VIP
+    if hostname.lower().startswith("con"):
+        return HOST_TYPE_CON
 
 def get_route(network):
     all_routes = os.popen('ip r').read().split('\n')
@@ -55,6 +62,21 @@ def del_route(route):
 def reset_default_routes(gateway, gatedev):
     os.popen('ip r del default')
     os.popen('ip r add default via %s dev %s'%(gateway, gatedev))
+
+def restore_default_routes():
+    all_routes = os.popen('ip r').read().split('\n')
+    default_gateway, default_gatedev = "", ""
+    for routes in all_routes:
+        items = routes.split(' ')
+        if items[0].startswith(CONTROL_NETWORKS[0]):
+            for i,item in enumerate(items):
+                if item == 'dev':
+                    default_gatedev = item[i+1]
+                if item == 'via':
+                    default_gateway = item[i+1]
+    
+    os.popen('ip r del default')
+    os.popen('ip r add default via %s dev %s'%(default_gateway, default_gatedev))
 
 def configure_host_routes():
     default_gateway, default_gatedev = get_route('default')
@@ -91,8 +113,8 @@ def configure_agg_routes():
         os.popen('ip r add %s dev %s src %s'%(remote_ipaddr, interface, ipaddr))
         os.popen('ip r add %s via %s dev %s src %s'%(remote_ipnetw, remote_ipaddr, interface, ipaddr))
 
-# TODO: Controller routes?
-def configure_routes(host_type):
+def configure_routes():
+    hosttype = get_host_type()
     func = {
         HOST_TYPE_ATK: configure_host_routes,
         HOST_TYPE_USR: configure_host_routes,
@@ -100,10 +122,15 @@ def configure_routes(host_type):
         HOST_TYPE_AGG: configure_agg_routes,
         HOST_TYPE_TOR: configure_host_routes,
         HOST_TYPE_CON: configure_host_routes,
-    }[host_type]
+    }[hosttype]
     func()
 
 if __name__ == "__main__":
-    hosttype = get_host_type()
-    configure_routes(host_type=hosttype)
+    assert len(CONTROL_NETWORKS) > 0, "No control networks, aborting!"
 
+    args = parser.parse_args()
+
+    if args.is_setup: # Setup
+        configure_routes()
+    else:
+        restore_default_routes()
