@@ -6,7 +6,9 @@
          <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def" />
       </sliver_type>
       <hardware_type name="d430" />
-      <services />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319 && cd /opt/ && mkdir tools && cd tools && wget https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+      </services>
       <interface client_id="aggr:control">
          <ip address="10.0.0.2" type="ipv4" netmask="255.255.0.0" />
       </interface>

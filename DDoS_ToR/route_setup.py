@@ -125,12 +125,17 @@ def configure_routes():
     }[hosttype]
     func()
 
+def add_local_hostname():
+    hostname = os.popen('hostname').read()
+    os.popen('echo "127.0.0.1 %s"| sudo tee -a /etc/hosts'(hostname))
+
 if __name__ == "__main__":
     assert len(CONTROL_NETWORKS) > 0, "No control networks, aborting!"
 
     args = parser.parse_args()
 
     if args.is_setup: # Setup
+        add_local_hostname()
         configure_routes()
     else:
         restore_default_routes()
