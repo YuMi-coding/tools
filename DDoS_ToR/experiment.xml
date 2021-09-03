@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+   <node client_id="controller">
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <sliver_type name="raw-pc">
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def.controller" />
+      </sliver_type>
+      <hardware_type name="d430" />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
+      <interface client_id="control:aggr">
+         <ip address="10.0.0.1" type="ipv4" netmask="255.255.0.0" />
+      </interface>
+   </node>
    <node client_id="aggregation">
       <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg" />
       <sliver_type name="raw-pc">
@@ -7,7 +24,11 @@
       </sliver_type>
       <hardware_type name="d430" />
       <services>
-         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319 && cd /opt/ && mkdir tools && cd tools && wget https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
       <interface client_id="aggr:control">
          <ip address="10.0.0.2" type="ipv4" netmask="255.255.0.0" />
@@ -22,77 +43,17 @@
          <ip address="10.3.0.2" type="ipv4" netmask="255.255.0.0" />
       </interface>
    </node>
-   <node client_id="vip1">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
-      <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def.vip" />
-      </sliver_type>
-      <hardware_type name="d430" />
-      <services />
-      <interface client_id="vip:tor1">
-         <ip address="10.1.1.1" type="ipv4" netmask="255.255.255.0" />
-      </interface>
-   </node>
-   <node client_id="attacker3">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
-      <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
-      </sliver_type>
-      <hardware_type name="d430" />
-      <services />
-      <interface client_id="attacker3:tor3">
-         <ip address="10.3.3.1" type="ipv4" netmask="255.255.255.0" />
-      </interface>
-   </node>
-   <node client_id="users">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
-      <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def.users" />
-      </sliver_type>
-      <hardware_type name="d430" />
-      <services />
-      <interface client_id="users:tor2">
-         <ip address="10.2.1.1" type="ipv4" netmask="255.255.255.0" />
-      </interface>
-   </node>
-   <node client_id="controller">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
-      <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def.controller" />
-      </sliver_type>
-      <hardware_type name="d430" />
-      <services />
-      <interface client_id="control:aggr">
-         <ip address="10.0.0.1" type="ipv4" netmask="255.255.0.0" />
-      </interface>
-   </node>
-   <node client_id="attacker2">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
-      <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
-      </sliver_type>
-      <services />
-      <hardware_type name="d430" />
-      <interface client_id="attacker2:tor3">
-         <ip address="10.3.2.1" type="ipv4" netmask="255.255.255.0" />
-      </interface>
-   </node>
-   <node client_id="attacker1">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
-      <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
-      </sliver_type>
-      <services />
-      <hardware_type name="d430" />
-      <interface client_id="attacker1:tor3">
-         <ip address="10.3.1.1" type="ipv4" netmask="255.255.255.0" />
-      </interface>
-   </node>
    <node client_id="ToR1">
       <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg" />
       <sliver_type name="raw-pc" />
       <hardware_type name="d430" />
-      <services />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
       <interface client_id="tor1:aggr">
          <ip address="10.1.0.1" type="ipv4" netmask="255.255.0.0" />
       </interface>
@@ -110,7 +71,13 @@
       <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg" />
       <sliver_type name="raw-pc" />
       <hardware_type name="d430" />
-      <services />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
       <interface client_id="tor2:aggr">
          <ip address="10.2.0.1" type="ipv4" netmask="255.255.0.0" />
       </interface>
@@ -127,7 +94,13 @@
    <node client_id="ToR3">
       <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg" />
       <sliver_type name="raw-pc" />
-      <services />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
       <interface client_id="tor3:aggr">
          <ip address="10.3.0.1" type="ipv4" netmask="255.255.0.0" />
       </interface>
@@ -142,26 +115,21 @@
       </interface>
       <hardware_type name="d430" />
    </node>
-   <node client_id="attacker5">
+   <node client_id="vip1">
       <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def.vip" />
       </sliver_type>
       <hardware_type name="d430" />
-      <services />
-      <interface client_id="attacker5:tor2">
-         <ip address="10.2.5.1" type="ipv4" netmask="255.255.255.0" />
-      </interface>
-   </node>
-   <node client_id="attacker4">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
-      <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
-      </sliver_type>
-      <hardware_type name="d430" />
-      <services />
-      <interface client_id="attacker4:tor2">
-         <ip address="10.2.4.1" type="ipv4" netmask="255.255.255.0" />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
+      <interface client_id="vip:tor1">
+         <ip address="10.1.1.1" type="ipv4" netmask="255.255.255.0" />
       </interface>
    </node>
    <node client_id="vip2">
@@ -169,7 +137,13 @@
       <sliver_type name="raw-pc">
          <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_Sim_Def.vip" />
       </sliver_type>
-      <services />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
       <hardware_type name="d430" />
       <interface client_id="vip2:tor1">
          <ip address="10.1.2.1" type="ipv4" netmask="255.255.255.0" />
@@ -180,10 +154,118 @@
       <sliver_type name="raw-pc">
          <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_Sim_Def.vip" />
       </sliver_type>
-      <services />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
       <hardware_type name="d430" />
       <interface client_id="vip3:tor1">
          <ip address="10.1.3.1" type="ipv4" netmask="255.255.255.0" />
+      </interface>
+   </node>
+   <node client_id="users">
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <sliver_type name="raw-pc">
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def.users" />
+      </sliver_type>
+      <hardware_type name="d430" />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
+      <interface client_id="users:tor2">
+         <ip address="10.2.1.1" type="ipv4" netmask="255.255.255.0" />
+      </interface>
+   </node>
+   <node client_id="attacker1">
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <sliver_type name="raw-pc">
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
+      </sliver_type>
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
+      <hardware_type name="d430" />
+      <interface client_id="attacker1:tor3">
+         <ip address="10.3.1.1" type="ipv4" netmask="255.255.255.0" />
+      </interface>
+   </node>
+   <node client_id="attacker2">
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <sliver_type name="raw-pc">
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
+      </sliver_type>
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
+      <hardware_type name="d430" />
+      <interface client_id="attacker2:tor3">
+         <ip address="10.3.2.1" type="ipv4" netmask="255.255.255.0" />
+      </interface>
+   </node>
+   <node client_id="attacker3">
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <sliver_type name="raw-pc">
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
+      </sliver_type>
+      <hardware_type name="d430" />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
+      <interface client_id="attacker3:tor3">
+         <ip address="10.3.3.1" type="ipv4" netmask="255.255.255.0" />
+      </interface>
+   </node>
+   <node client_id="attacker4">
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <sliver_type name="raw-pc">
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
+      </sliver_type>
+      <hardware_type name="d430" />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
+      <interface client_id="attacker4:tor2">
+         <ip address="10.2.4.1" type="ipv4" netmask="255.255.255.0" />
+      </interface>
+   </node>
+   <node client_id="attacker5">
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <sliver_type name="raw-pc">
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
+      </sliver_type>
+      <hardware_type name="d430" />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
+      </services>
+      <interface client_id="attacker5:tor2">
+         <ip address="10.2.5.1" type="ipv4" netmask="255.255.255.0" />
       </interface>
    </node>
    <link client_id="aggr-control">
@@ -302,14 +384,14 @@
       <property source_id="vip3:tor1" dest_id="tor1:vip3" capacity="10000000" />
       <property source_id="tor1:vip3" dest_id="vip3:tor1" capacity="10000000" />
    </link>
-   <rspec_tour xmlns="http://www.protogeni.net/resources/rspec/ext/apt-tour/1">
-      <description xmlns="" type="markdown">Simulation for DDoS and provides an environment for its mitigation. 
-    Implements the Top-of-Rack switching topology as the new environment</description>
-      <instructions xmlns="" type="markdown">After starting the experiment, there is stuff to configure/ check against:
-
-    1. change the hostnames in `./startExperiment.sh`
-    2. bind the MAC address using `arp` commands in each machine
-    3. change the file at `src/topo.json`,  especially each hosts' MAC addresses
-    4. prevent the VIP host from bouncing traffic from spoofed IP through `sudo iptables -A OUTPUT -p tcp -o eno1 --destination-port 80 -j DROP`</instructions>
-   </rspec_tour>
+<rspec_tour xmlns="http://www.protogeni.net/resources/rspec/ext/apt-tour/1">
+<description xmlns="" type="markdown">
+Simulation for DDoS and provides an environment for its mitigation. 
+Implements the Top-of-Rack switching topology as the new environment
+</description>
+<instructions xmlns="" type="markdown">
+Notes for this experiment profile:
+1. One may find the host not being able to login, please use the file at `/opt/tools/route_setup.py`
+</instructions>
+</rspec_tour>
 </rspec>
