@@ -68,12 +68,13 @@ def restore_default_routes():
     default_gateway, default_gatedev = "", ""
     for routes in all_routes:
         items = routes.split(' ')
+        print(items)
         if items[0].startswith(CONTROL_NETWORKS[0]):
             for i,item in enumerate(items):
                 if item == 'dev':
-                    default_gatedev = item[i+1]
+                    default_gatedev = items[i+1]
                 if item == 'via':
-                    default_gateway = item[i+1]
+                    default_gateway = items[i+1]
     
     os.popen('ip r del default')
     os.popen('ip r add default via %s dev %s'%(default_gateway, default_gatedev))
