@@ -59,6 +59,9 @@ def set_control_routes(gateway, gatedev):
 def del_route(route):
     os.popen('ip r del %s'%(route))
 
+def remove_default_routes():
+    os.popen('ip r del default')
+
 def reset_default_routes(gateway, gatedev):
     os.popen('ip r del default')
     os.popen('ip r add default via %s dev %s'%(gateway, gatedev))
@@ -75,7 +78,7 @@ def restore_default_routes():
                     default_gatedev = items[i+1]
                 if item == 'via':
                     default_gateway = items[i+1]
-    
+
     os.popen('ip r del default')
     os.popen('ip r add default via %s dev %s'%(default_gateway, default_gatedev))
 
@@ -84,7 +87,7 @@ def configure_host_routes():
     exp_gateway, exp_gatedev = get_route('10.0.0.0/8')
 
     set_control_routes(default_gateway, default_gatedev)
-    reset_default_routes(exp_gateway, exp_gatedev)
+    remove_default_routes()
 
 def configure_agg_routes():
     default_gateway, default_gatedev = get_route('default')
