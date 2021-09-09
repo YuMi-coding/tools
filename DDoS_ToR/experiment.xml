@@ -49,6 +49,7 @@
       <hardware_type name="d430" />
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo chmod 666 /opt/" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
@@ -73,6 +74,7 @@
       <hardware_type name="d430" />
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo chmod 666 /opt/" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
@@ -96,6 +98,7 @@
       <sliver_type name="raw-pc" />
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo chmod 666 /opt/" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="wget -O /opt/tools/route_setup.py https://raw.githubusercontent.com/YuMi-coding/tools/main/DDoS_ToR/route_setup.py" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
