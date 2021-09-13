@@ -1,0 +1,15 @@
+<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+   <rspec_tour xmlns="http://www.protogeni.net/resources/rspec/ext/apt-tour/1">
+      <description xmlns="" type="markdown">A single host that works as a data processing unit and test platform.</description>
+   </rspec_tour>
+   <node client_id="node-0">
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <sliver_type name="raw-pc">
+         <disk_image name="urn:publicid:IDN+emulab.net+image+emulab-ops//ebpf-18.04" />
+      </sliver_type>
+      <hardware_type name="d430" />
+      <services>
+         <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
+      </services>
+   </node>
+</rspec>
