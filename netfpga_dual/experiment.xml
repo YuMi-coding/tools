@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+   <node client_id="host0">
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <sliver_type name="raw-pc" />
+      <emulab:blockstore name="bs0" mountpoint="/extend_storage" class="local" size="250GB" placement="any"/>
+      <hardware_type name="ibm8335" />
+      <services />
+      <interface client_id="h0-eth0">
+         <ip address="10.0.0.1" type="ipv4" netmask="255.255.255.0" />
+      </interface>
+   </node>
+   <node client_id="host1">
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <sliver_type name="raw-pc" />
+      <emulab:blockstore name="bs1" mountpoint="/extend_storage" class="local" size="250GB" placement="any"/>
+      <hardware_type name="ibm8335" />
+      <services />
+      <interface client_id="h1-eth0">
+         <ip address="10.0.0.2" type="ipv4" netmask="255.255.255.0" />
+      </interface>
+   </node>
+   <link client_id="link-0">
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
+      <interface_ref client_id="h1-eth0" />
+      <interface_ref client_id="h0-eth0" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
+   </link>
+</rspec>
