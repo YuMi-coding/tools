@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
    <node client_id="controller">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def.controller" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_ToR"/>
       </sliver_type>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
@@ -14,15 +13,15 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
       <interface client_id="control:aggr">
-         <ip address="10.0.0.1" type="ipv4" netmask="255.255.0.0" />
+         <ip address="10.0.0.1" type="ipv4" netmask="255.255.0.0"/>
       </interface>
    </node>
    <node client_id="aggregation">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg"/>
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_ToR.aggregation"/>
       </sliver_type>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
@@ -31,22 +30,22 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
       <interface client_id="aggr:control">
-         <ip address="10.0.0.2" type="ipv4" netmask="255.255.0.0" />
+         <ip address="10.0.0.2" type="ipv4" netmask="255.255.0.0"/>
       </interface>
       <interface client_id="aggr:tor1">
-         <ip address="10.1.0.2" type="ipv4" netmask="255.255.0.0" />
+         <ip address="10.1.0.2" type="ipv4" netmask="255.255.0.0"/>
       </interface>
       <interface client_id="aggr:tor2">
-         <ip address="10.2.0.2" type="ipv4" netmask="255.255.0.0" />
+         <ip address="10.2.0.2" type="ipv4" netmask="255.255.0.0"/>
       </interface>
       <interface client_id="aggr:tor3">
-         <ip address="10.3.0.2" type="ipv4" netmask="255.255.0.0" />
+         <ip address="10.3.0.2" type="ipv4" netmask="255.255.0.0"/>
       </interface>
    </node>
    <node client_id="ToR1">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg" />
-      <sliver_type name="raw-pc" />
-      <hardware_type name="d430" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg"/>
+      <sliver_type name="raw-pc"/>
+      <hardware_type name="d430"/>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo chmod 666 /opt/" shell="/bin/bash"/>
@@ -56,22 +55,22 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
       <interface client_id="tor1:aggr">
-         <ip address="10.1.0.1" type="ipv4" netmask="255.255.0.0" />
+         <ip address="10.1.0.1" type="ipv4" netmask="255.255.0.0"/>
       </interface>
       <interface client_id="tor1:vip">
-         <ip address="10.1.1.2" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.1.1.2" type="ipv4" netmask="255.255.255.0"/>
       </interface>
       <interface client_id="tor1:vip3">
-         <ip address="10.1.3.2" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.1.3.2" type="ipv4" netmask="255.255.255.0"/>
       </interface>
       <interface client_id="tor1:vip2">
-         <ip address="10.1.2.2" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.1.2.2" type="ipv4" netmask="255.255.255.0"/>
       </interface>
    </node>
    <node client_id="ToR2">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg" />
-      <sliver_type name="raw-pc" />
-      <hardware_type name="d430" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg"/>
+      <sliver_type name="raw-pc"/>
+      <hardware_type name="d430"/>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo chmod 666 /opt/" shell="/bin/bash"/>
@@ -81,21 +80,21 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
       <interface client_id="tor2:aggr">
-         <ip address="10.2.0.1" type="ipv4" netmask="255.255.0.0" />
+         <ip address="10.2.0.1" type="ipv4" netmask="255.255.0.0"/>
       </interface>
       <interface client_id="tor2:users">
-         <ip address="10.2.1.2" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.2.1.2" type="ipv4" netmask="255.255.255.0"/>
       </interface>
       <interface client_id="tor2:attacker4">
-         <ip address="10.2.4.2" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.2.4.2" type="ipv4" netmask="255.255.255.0"/>
       </interface>
       <interface client_id="tor2:attacker5">
-         <ip address="10.2.5.2" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.2.5.2" type="ipv4" netmask="255.255.255.0"/>
       </interface>
    </node>
    <node client_id="ToR3">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg" />
-      <sliver_type name="raw-pc" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/router.svg"/>
+      <sliver_type name="raw-pc"/>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo chmod 666 /opt/" shell="/bin/bash"/>
@@ -105,25 +104,25 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
       <interface client_id="tor3:aggr">
-         <ip address="10.3.0.1" type="ipv4" netmask="255.255.0.0" />
+         <ip address="10.3.0.1" type="ipv4" netmask="255.255.0.0"/>
       </interface>
       <interface client_id="tor3:attacker3">
-         <ip address="10.3.3.2" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.3.3.2" type="ipv4" netmask="255.255.255.0"/>
       </interface>
       <interface client_id="tor3:attacker2">
-         <ip address="10.3.2.2" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.3.2.2" type="ipv4" netmask="255.255.255.0"/>
       </interface>
       <interface client_id="tor3:attacker1">
-         <ip address="10.3.1.2" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.3.1.2" type="ipv4" netmask="255.255.255.0"/>
       </interface>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
    </node>
    <node client_id="vip1">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def.vip" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def.vip"/>
       </sliver_type>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
@@ -132,13 +131,13 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
       <interface client_id="vip:tor1">
-         <ip address="10.1.1.1" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.1.1.1" type="ipv4" netmask="255.255.255.0"/>
       </interface>
    </node>
    <node client_id="vip2">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_Sim_Def.vip" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_Sim_Def.vip"/>
       </sliver_type>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
@@ -147,15 +146,15 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
       <interface client_id="vip2:tor1">
-         <ip address="10.1.2.1" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.1.2.1" type="ipv4" netmask="255.255.255.0"/>
       </interface>
    </node>
    <node client_id="vip3">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_Sim_Def.vip" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_Sim_Def.vip"/>
       </sliver_type>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
@@ -164,17 +163,17 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
       <interface client_id="vip3:tor1">
-         <ip address="10.1.3.1" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.1.3.1" type="ipv4" netmask="255.255.255.0"/>
       </interface>
    </node>
    <node client_id="users">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_Sim_Def.users" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_ToR.users"/>
       </sliver_type>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
@@ -183,13 +182,13 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
       <interface client_id="users:tor2">
-         <ip address="10.2.1.1" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.2.1.1" type="ipv4" netmask="255.255.255.0"/>
       </interface>
    </node>
    <node client_id="attacker1">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.attacker2"/>
       </sliver_type>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
@@ -198,15 +197,15 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
       <interface client_id="attacker1:tor3">
-         <ip address="10.3.1.1" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.3.1.1" type="ipv4" netmask="255.255.255.0"/>
       </interface>
    </node>
    <node client_id="attacker2">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML:DDoS_ToR.attacker2"/>
       </sliver_type>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
@@ -215,17 +214,17 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt update" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
       <interface client_id="attacker2:tor3">
-         <ip address="10.3.2.1" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.3.2.1" type="ipv4" netmask="255.255.255.0"/>
       </interface>
    </node>
    <node client_id="attacker3">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.attacker2"/>
       </sliver_type>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
@@ -234,15 +233,15 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
       <interface client_id="attacker3:tor3">
-         <ip address="10.3.3.1" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.3.3.1" type="ipv4" netmask="255.255.255.0"/>
       </interface>
    </node>
    <node client_id="attacker4">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.attacker2"/>
       </sliver_type>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
@@ -251,15 +250,15 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
       <interface client_id="attacker4:tor2">
-         <ip address="10.2.4.1" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.2.4.1" type="ipv4" netmask="255.255.255.0"/>
       </interface>
    </node>
    <node client_id="attacker5">
-      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg" />
+      <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
       <sliver_type name="raw-pc">
-         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.atk_dpdk" />
+         <disk_image name="urn:publicid:IDN+emulab.net+image+Distributed-ML//DDoS_ToR.attacker2"/>
       </sliver_type>
-      <hardware_type name="d430" />
+      <hardware_type name="d430"/>
       <services>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo usermod --shell /bin/bash yxm319" shell="/bin/bash"/>
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="mkdir /opt/tools" shell="/bin/bash"/>
@@ -268,124 +267,124 @@
          <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo python3 /opt/tools/route_setup.py" shell="/bin/bash"/>
       </services>
       <interface client_id="attacker5:tor2">
-         <ip address="10.2.5.1" type="ipv4" netmask="255.255.255.0" />
+         <ip address="10.2.5.1" type="ipv4" netmask="255.255.255.0"/>
       </interface>
    </node>
    <link client_id="aggr-control">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="aggr:control" />
-      <interface_ref client_id="control:aggr" />
-      <property source_id="aggr:control" dest_id="control:aggr" capacity="10000000" />
-      <property source_id="control:aggr" dest_id="aggr:control" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="aggr:control"/>
+      <interface_ref client_id="control:aggr"/>
+      <property source_id="aggr:control" dest_id="control:aggr" capacity="10000000"/>
+      <property source_id="control:aggr" dest_id="aggr:control" capacity="10000000"/>
    </link>
    <link client_id="aggr-tor1">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="tor1:aggr" />
-      <interface_ref client_id="aggr:tor1" />
-      <property source_id="tor1:aggr" dest_id="aggr:tor1" capacity="10000000" />
-      <property source_id="aggr:tor1" dest_id="tor1:aggr" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="tor1:aggr"/>
+      <interface_ref client_id="aggr:tor1"/>
+      <property source_id="tor1:aggr" dest_id="aggr:tor1" capacity="10000000"/>
+      <property source_id="aggr:tor1" dest_id="tor1:aggr" capacity="10000000"/>
    </link>
    <link client_id="aggr-tor2">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="tor2:aggr" />
-      <interface_ref client_id="aggr:tor2" />
-      <property source_id="tor2:aggr" dest_id="aggr:tor2" capacity="10000000" />
-      <property source_id="aggr:tor2" dest_id="tor2:aggr" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="tor2:aggr"/>
+      <interface_ref client_id="aggr:tor2"/>
+      <property source_id="tor2:aggr" dest_id="aggr:tor2" capacity="10000000"/>
+      <property source_id="aggr:tor2" dest_id="tor2:aggr" capacity="10000000"/>
    </link>
    <link client_id="tor1-vip">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="vip:tor1" />
-      <interface_ref client_id="tor1:vip" />
-      <property source_id="vip:tor1" dest_id="tor1:vip" capacity="10000000" />
-      <property source_id="tor1:vip" dest_id="vip:tor1" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="vip:tor1"/>
+      <interface_ref client_id="tor1:vip"/>
+      <property source_id="vip:tor1" dest_id="tor1:vip" capacity="10000000"/>
+      <property source_id="tor1:vip" dest_id="vip:tor1" capacity="10000000"/>
    </link>
    <link client_id="tor2-users">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="users:tor2" />
-      <interface_ref client_id="tor2:users" />
-      <property source_id="users:tor2" dest_id="tor2:users" capacity="10000000" />
-      <property source_id="tor2:users" dest_id="users:tor2" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="users:tor2"/>
+      <interface_ref client_id="tor2:users"/>
+      <property source_id="users:tor2" dest_id="tor2:users" capacity="10000000"/>
+      <property source_id="tor2:users" dest_id="users:tor2" capacity="10000000"/>
    </link>
    <link client_id="aggr-tor3">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="tor3:aggr" />
-      <interface_ref client_id="aggr:tor3" />
-      <property source_id="tor3:aggr" dest_id="aggr:tor3" capacity="10000000" />
-      <property source_id="aggr:tor3" dest_id="tor3:aggr" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="tor3:aggr"/>
+      <interface_ref client_id="aggr:tor3"/>
+      <property source_id="tor3:aggr" dest_id="aggr:tor3" capacity="10000000"/>
+      <property source_id="aggr:tor3" dest_id="tor3:aggr" capacity="10000000"/>
    </link>
    <link client_id="tor3-attacker3">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="attacker3:tor3" />
-      <interface_ref client_id="tor3:attacker3" />
-      <property source_id="attacker3:tor3" dest_id="tor3:attacker3" capacity="10000000" />
-      <property source_id="tor3:attacker3" dest_id="attacker3:tor3" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="attacker3:tor3"/>
+      <interface_ref client_id="tor3:attacker3"/>
+      <property source_id="attacker3:tor3" dest_id="tor3:attacker3" capacity="10000000"/>
+      <property source_id="tor3:attacker3" dest_id="attacker3:tor3" capacity="10000000"/>
    </link>
    <link client_id="tor3-attacker2">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="attacker2:tor3" />
-      <interface_ref client_id="tor3:attacker2" />
-      <property source_id="attacker2:tor3" dest_id="tor3:attacker2" capacity="10000000" />
-      <property source_id="tor3:attacker2" dest_id="attacker2:tor3" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="attacker2:tor3"/>
+      <interface_ref client_id="tor3:attacker2"/>
+      <property source_id="attacker2:tor3" dest_id="tor3:attacker2" capacity="10000000"/>
+      <property source_id="tor3:attacker2" dest_id="attacker2:tor3" capacity="10000000"/>
    </link>
    <link client_id="tor3-attacker1">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="attacker1:tor3" />
-      <interface_ref client_id="tor3:attacker1" />
-      <property source_id="attacker1:tor3" dest_id="tor3:attacker1" capacity="10000000" />
-      <property source_id="tor3:attacker1" dest_id="attacker1:tor3" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="attacker1:tor3"/>
+      <interface_ref client_id="tor3:attacker1"/>
+      <property source_id="attacker1:tor3" dest_id="tor3:attacker1" capacity="10000000"/>
+      <property source_id="tor3:attacker1" dest_id="attacker1:tor3" capacity="10000000"/>
    </link>
    <link client_id="tor2-attacker5">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="attacker5:tor2" />
-      <interface_ref client_id="tor2:attacker5" />
-      <property source_id="attacker5:tor2" dest_id="tor2:attacker5" capacity="10000000" />
-      <property source_id="tor2:attacker5" dest_id="attacker5:tor2" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="attacker5:tor2"/>
+      <interface_ref client_id="tor2:attacker5"/>
+      <property source_id="attacker5:tor2" dest_id="tor2:attacker5" capacity="10000000"/>
+      <property source_id="tor2:attacker5" dest_id="attacker5:tor2" capacity="10000000"/>
    </link>
    <link client_id="tor2-attacker4">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="attacker4:tor2" />
-      <interface_ref client_id="tor2:attacker4" />
-      <property source_id="attacker4:tor2" dest_id="tor2:attacker4" capacity="10000000" />
-      <property source_id="tor2:attacker4" dest_id="attacker4:tor2" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="attacker4:tor2"/>
+      <interface_ref client_id="tor2:attacker4"/>
+      <property source_id="attacker4:tor2" dest_id="tor2:attacker4" capacity="10000000"/>
+      <property source_id="tor2:attacker4" dest_id="attacker4:tor2" capacity="10000000"/>
    </link>
    <link client_id="tor1-vip2">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="vip2:tor1" />
-      <interface_ref client_id="tor1:vip2" />
-      <property source_id="vip2:tor1" dest_id="tor1:vip2" capacity="10000000" />
-      <property source_id="tor1:vip2" dest_id="vip2:tor1" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="vip2:tor1"/>
+      <interface_ref client_id="tor1:vip2"/>
+      <property source_id="vip2:tor1" dest_id="tor1:vip2" capacity="10000000"/>
+      <property source_id="tor1:vip2" dest_id="vip2:tor1" capacity="10000000"/>
    </link>
    <link client_id="tor1-vip3">
-      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined" />
-      <link_type name="lan" />
-      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no" />
-      <interface_ref client_id="vip3:tor1" />
-      <interface_ref client_id="tor1:vip3" />
-      <property source_id="vip3:tor1" dest_id="tor1:vip3" capacity="10000000" />
-      <property source_id="tor1:vip3" dest_id="vip3:tor1" capacity="10000000" />
+      <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+      <link_type name="lan"/>
+      <interswitch xmlns="http://www.protogeni.net/resources/rspec/ext/emulab/1" allow="no"/>
+      <interface_ref client_id="vip3:tor1"/>
+      <interface_ref client_id="tor1:vip3"/>
+      <property source_id="vip3:tor1" dest_id="tor1:vip3" capacity="10000000"/>
+      <property source_id="tor1:vip3" dest_id="vip3:tor1" capacity="10000000"/>
    </link>
 <rspec_tour xmlns="http://www.protogeni.net/resources/rspec/ext/apt-tour/1">
 <description xmlns="" type="markdown">
