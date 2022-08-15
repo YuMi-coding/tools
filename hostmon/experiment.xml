@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="server">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
+    <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="raw-pc">
+      <disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+Distributed-ML//hostmon.server"/>
+    </sliver_type>
+    <services xmlns="http://www.geni.net/resources/rspec/3"/>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="server-e">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="192.168.100.10" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="server-c">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="192.168.10.10" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="node-1">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
+    <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="raw-pc">
+      <disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+Distributed-ML//hostmon.client"/>
+    </sliver_type>
+    <services xmlns="http://www.geni.net/resources/rspec/3"/>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="1-e">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="192.168.100.11" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="1-c">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="192.168.10.11" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="node-2">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
+    <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="raw-pc">
+      <disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+Distributed-ML//hostmon.client"/>
+    </sliver_type>
+    <services xmlns="http://www.geni.net/resources/rspec/3"/>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="2-e">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="192.168.100.12" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="2-c">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="192.168.10.12" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="node-3">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
+    <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="raw-pc">
+      <disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+Distributed-ML//hostmon.client"/>
+    </sliver_type>
+    <services xmlns="http://www.geni.net/resources/rspec/3"/>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="3-c">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="192.168.10.13" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="3-e">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="192.168.100.13" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+  <link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-0">
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="server-e"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="1-e"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="2-e"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="3-e"/>
+  </link>
+  <link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-1">
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="server-c"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="3-c"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="1-c"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="2-c"/>
+  </link>
+  <rspec_tour xmlns="http://www.protogeni.net/resources/rspec/ext/apt-tour/1">
+    <description xmlns="" type="markdown">The hostmon experiment topology.</description>
+  </rspec_tour>
+</rspec>

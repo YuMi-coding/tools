@@ -1,0 +1,1 @@
+dhtnode -p 4222 -n 0 -f ~/opendht-state.txt -v -l ~/dhtlog.txt

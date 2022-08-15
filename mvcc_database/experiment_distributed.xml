@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<rspec xmlns="http://www.geni.net/resources/rspec/3" xmlns:emulab="http://www.protogeni.net/resources/rspec/ext/emulab/1" xmlns:tour="http://www.protogeni.net/resources/rspec/ext/apt-tour/1" xmlns:jacks="http://www.protogeni.net/resources/rspec/ext/jacks/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geni.net/resources/rspec/3    http://www.geni.net/resources/rspec/3/request.xsd" type="request">
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="node-utah-1">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 1"/>
+        <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="raw-pc">
+      <disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+Distributed-ML:mvcc_opensource_db.ck21.5"/>
+    </sliver_type>
+    <hardware_type xmlns="http://www.geni.net/resources/rspec/3" name="c6525-25g"/>
+    <services>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="echo 'export PATH=$PATH:/opt/cockroach-v21.1.15/src/github.com/cockroachdb/cockroach' &gt;&gt; /etc/profile" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo timedatectl set-ntp no" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt-get install ntp" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp stop" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo ntpd -b time.google.com" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp start" shell="/bin/bash"/>
+    </services>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-u1">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.1" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="node-utah-2">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 1"/>
+        <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="raw-pc">
+      <disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+Distributed-ML:mvcc_opensource_db.ck21.5"/>
+    </sliver_type>
+    <hardware_type xmlns="http://www.geni.net/resources/rspec/3" name="c6525-25g"/>
+    <services>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="echo 'export PATH=$PATH:/opt/cockroach-v21.1.15/src/github.com/cockroachdb/cockroach' &gt;&gt; /etc/profile" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo timedatectl set-ntp no" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt-get install ntp" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp stop" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo ntpd -b time.google.com" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp start" shell="/bin/bash"/>
+    </services>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-u2">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.3" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="node-utah-3">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 1"/>
+        <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="raw-pc">
+      <disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+Distributed-ML:mvcc_opensource_db.ck21.5"/>
+    </sliver_type>
+    <hardware_type xmlns="http://www.geni.net/resources/rspec/3" name="c6525-25g"/>
+      <services>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="echo 'export PATH=$PATH:/opt/cockroach-v21.1.15/src/github.com/cockroachdb/cockroach' &gt;&gt; /etc/profile" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo timedatectl set-ntp no" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt-get install ntp" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp stop" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo ntpd -b time.google.com" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp start" shell="/bin/bash"/>
+    </services>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-u3">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.5" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="switch-u1">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/default.svg"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 1"/>
+    <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="emulab-xen"/>
+    <services xmlns="http://www.geni.net/resources/rspec/3"/>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-uu1">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.2" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-uu2">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.4" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-uu3">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.6" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-uw">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.101" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-ue">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.102" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="node-wisc-1">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 2"/>
+        <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="raw-pc">
+      <disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+Distributed-ML:mvcc_opensource_db.ck21.5"/>
+    </sliver_type>
+    <hardware_type xmlns="http://www.geni.net/resources/rspec/3" name="c220g5"/>
+    <services>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="echo 'export PATH=$PATH:/opt/cockroach-v21.1.15/src/github.com/cockroachdb/cockroach' &gt;&gt; /etc/profile" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo timedatectl set-ntp no" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt-get install ntp" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp stop" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo ntpd -b time.google.com" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp start" shell="/bin/bash"/>
+    </services>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-w1">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.11" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="node-wisc-2">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 2"/>
+        <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="raw-pc">
+      <disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+Distributed-ML:mvcc_opensource_db.ck21.5"/>
+    </sliver_type>
+    <hardware_type xmlns="http://www.geni.net/resources/rspec/3" name="c220g5"/>
+    <services>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="echo 'export PATH=$PATH:/opt/cockroach-v21.1.15/src/github.com/cockroachdb/cockroach' &gt;&gt; /etc/profile" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo timedatectl set-ntp no" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt-get install ntp" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp stop" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo ntpd -b time.google.com" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp start" shell="/bin/bash"/>
+    </services>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-w2">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.13" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="node-wisc-3">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/server.svg"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 2"/>
+        <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="raw-pc">
+      <disk_image xmlns="http://www.geni.net/resources/rspec/3" name="urn:publicid:IDN+emulab.net+image+Distributed-ML:mvcc_opensource_db.ck21.5"/>
+    </sliver_type>
+    <hardware_type xmlns="http://www.geni.net/resources/rspec/3" name="c220g5"/>
+    <services>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="echo 'export PATH=$PATH:/opt/cockroach-v21.1.15/src/github.com/cockroachdb/cockroach' &gt;&gt; /etc/profile" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo timedatectl set-ntp no" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo apt-get install ntp" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp stop" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo ntpd -b time.google.com" shell="/bin/bash"/>
+      <execute xmlns="http://www.geni.net/resources/rspec/3" command="sudo service ntp start" shell="/bin/bash"/>
+    </services>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-w3">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.15" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+  <node xmlns="http://www.geni.net/resources/rspec/3" client_id="switch-w1">
+    <icon xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" url="https://www.emulab.net/protogeni/jacks-stable/images/default.svg"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="Site 2"/>
+    <sliver_type xmlns="http://www.geni.net/resources/rspec/3" name="emulab-xen"/>
+    <services xmlns="http://www.geni.net/resources/rspec/3"/>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-ww1">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.12" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-ww2">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.14" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-ww3">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.16" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-wu">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.110" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+    <interface xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-we">
+      <ip xmlns="http://www.geni.net/resources/rspec/3" address="10.0.0.112" type="ipv4" netmask="255.255.255.0"/>
+    </interface>
+  </node>
+
+  <link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-w1">
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-w1"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-ww1"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+  </link>
+  <link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-w2">
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-w2"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-ww2"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+  </link>
+  <link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-w3">
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-w3"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-ww3"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+  </link>
+  <link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-u1">
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-u1"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-uu1"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+  </link>
+  <link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-u2">
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-u2"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-uu2"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+  </link>
+  <link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-u3">
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-u3"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-uu3"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+  </link>
+
+  <link xmlns="http://www.geni.net/resources/rspec/3" client_id="link-uw">
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-uw"/>
+    <interface_ref xmlns="http://www.geni.net/resources/rspec/3" client_id="interface-wu"/>
+    <site xmlns="http://www.protogeni.net/resources/rspec/ext/jacks/1" id="undefined"/>
+  </link>
+
+  <rspec_tour xmlns="http://www.protogeni.net/resources/rspec/ext/apt-tour/1">
+    <description xmlns="" type="markdown">Topology for the Multiversion concurrency control database experiment.</description>
+    <instructions xmlns="" type="markdown">Work in progress...</instructions>
+  </rspec_tour>
+</rspec>
